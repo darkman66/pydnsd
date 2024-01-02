@@ -13,7 +13,7 @@ class ProxyResolver(BaseProxyResolver):
     def resolve(self, request, handler):
         type_name = QTYPE[request.q.qtype]
         print(dir(request.q))
-        logging.info('no local zone found, proxying %s[%s]', request.q.qname, type_name)
+        logging.info("no local zone found, proxying %s[%s]", request.q.qname, type_name)
         return super().resolve(request, handler)
 
 
@@ -46,7 +46,7 @@ class DNSService:
 
 if __name__ == "__main__":
     coloredlogs.install(level=logging.DEBUG)
-    s = DNSService(8953, '1.1.1.1')
+    s = DNSService(8953, "1.1.1.1")
     s.start()
     while s.is_running:
         time.sleep(0.1)
